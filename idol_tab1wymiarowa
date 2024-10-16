@@ -1,0 +1,69 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+
+using namespace std;
+
+const int N = 10;
+
+void Wypisz(int A[]);
+void Losuj(int A[]);
+int SzukajLidera(int A[]);
+int main()
+{
+srand(time(NULL));
+int A[N];
+
+
+
+Losuj(A);
+Wypisz(A);
+cout << endl;
+cout << SzukajLidera(A);
+
+    return 0;
+}
+
+void Wypisz(int A[]){
+for(int i =0; i<N; i++){
+    cout << A[i] << " ";
+}
+}
+
+int SzukajLidera(int A[]){
+int i, kandydat, ile=0;
+for(i=0; i<N; i++){
+    if(ile==0){
+        ile=1;
+        kandydat = A[i];
+    }else if(A[i] == kandydat){
+    ile++;
+    }else{
+    ile--;
+    }
+}
+ile = 0;
+for(i=0; i<N; i++){
+    if(A[i]==kandydat){
+        ile++;
+    }
+}
+
+if(ile>N/2){
+    return kandydat;
+}else{
+return -1;
+}
+}
+void Losuj(int A[]){
+int x = rand()%100;
+for(int i =0; i<N; i++){
+    if(rand()%2==0){
+        A[i] = rand()%100;
+
+    }else{
+    A[i] = x;
+    }
+}
+}
