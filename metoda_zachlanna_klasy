@@ -1,0 +1,46 @@
+#include <iostream>
+#include <algorythm>
+#include <fsteam>
+
+using namespace std;
+
+int const N =5;
+
+struct proba{
+int pocz,czas;
+};
+bool Porownaj(proba a, proba b)
+{
+
+    return (a.pocz*60+a.czas<b.pocz*60+b.czas);
+}
+
+
+int MLP(proba P[]){
+
+int lp=1, ost=0;
+for(int i =1;i<N;i++){
+    if(P[i].pocz*60>=P[ost.pocz]*60+P[ost].czas){
+        lp++;
+        ost=i;
+    }
+}
+return lp;
+}
+
+int main()
+{
+    probaP[N];
+    ifstream we("dane.txt");
+    for(int i=0;i<N;i++){
+        we>>P[i].pocz>>P[i].czas;
+    }
+        we.close();
+        sort(P,P+N,Porownaj);
+        cout<<"Maksymalna liczba prob: "<<MLP(P);
+
+
+    return 0;
+    }
+
+
